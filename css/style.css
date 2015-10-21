@@ -1,0 +1,791 @@
+/*HackerYou Week 3 project
+By Nadia Siu Van*/
+
+/* clear fix for floats (overflow hidden in use already) */
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    clear: both;
+    height: 0;
+    }
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+/* apply a natural box layout model to all elements */
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+ 
+/*------------ GLOBAL STYLES ------------*/
+/*---------------------------------------*/
+
+body {
+	margin: 0;
+	padding: 0;
+	line-height: 1.35em;
+	color: #333;
+	font-family: 'Raleway', sans-serif;
+	font-weight: 400;
+	font-size: 80%;
+	letter-spacing: 1px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+	line-height: 1.35em;
+}
+h1 {
+	position: absolute;
+	text-align: left;
+	top: 1.6em;
+	left: 1.75em;
+	font-size: 6em;
+	letter-spacing: 0.2em;
+	line-height: 1.2em;
+
+}
+h2 {
+	position: relative;
+	width: 4em;
+	font-family: 'Raleway', sans-serif;
+	color: #aaa;
+	font-weight: 100;
+	font-size: 12em;
+	letter-spacing: 0.2em;
+	line-height: 2.1em;
+}
+h3 {
+	font-size: 2em;
+	text-align: right;
+}
+h4 {
+	font-family: 'Raleway', sans-serif;
+	text-align: right;
+	color: #888;
+	font-size: 1.4em;
+}
+h5 {
+	font-size: 1.4em;
+	font-weight: 400;
+}
+h6 {
+	text-align: left;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1em;
+	font-weight: 400;
+	color: #888;
+}
+p {
+	letter-spacing: 0.05em;
+}
+a {
+	text-decoration: none;
+}
+ul {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+form, li {
+	display: inline-block;
+}
+li {
+	list-style-type: none;
+}
+form {
+	margin: 0 0 0 1em;
+	width: 65%;
+}
+input {
+	vertical-align: middle;
+	padding: 0.5em 1.5em;
+	margin: 0 0.25em;
+}
+.email {
+	border: 2px solid #ccc;
+	font-size: 0.9em;
+	padding: 0.7em 1.5em;
+	width: 55%;
+}
+.button {
+	border: 2px solid #888;
+	text-transform: uppercase;
+	color: #333;
+	font-weight: 700;
+}
+.button:hover {
+	background-color: #888;
+	color: #efefef;
+}
+
+.content-wrapper {
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.float-left {
+	float: left;
+}
+.float-right {
+	float: right;
+}
+.thin {
+	font-weight: lighter;
+}
+.double-box-wrap, .double-box-wrap img, .box {
+	display: inline-block;
+}
+.line {
+	display: block;
+	width: 5em;
+	height: 1em;
+	margin: 0 auto 1em;
+	border: solid #efefef;
+	border-width: 0 0 1px;
+}
+.double-box-wrap {
+	position: relative;
+	width: 39em;
+}
+.double-box-wrap img {
+	width: 18em;
+	height: 18em;
+	background-color: #efefef;
+	margin: 0.5em;
+}
+.double-box-wrap .line {
+	margin: 0 0 1em auto;
+}
+.double-line {				/*position relative to .double-box-wrap */
+	position: absolute; 
+	top: 2.5em;
+	left: 19em;
+	height: 0.5em;
+	width: 2.5em;
+	border: solid #ff4f4f;
+	border-width: 2px 0;
+}
+.box {
+	margin: 0.5em;
+	width: 18em;
+	height: 18em;
+	padding: 5em 0;
+	vertical-align: top;
+}
+.text-frame {
+	border: 1px solid #fff;
+	vertical-align: top;
+}
+.red-font {
+	color:#ff5555;
+	font-family: 'Montserrat', sans-serif;
+	font-weight:500;
+	text-transform: uppercase;
+}
+#my-account, #main-nav, #banner, #slider, #promo, #samples, #quote, #blog, #brands, #feature-policy, #about, #legal {
+	width: 100%;
+	text-align: center;
+}
+#banner, #slider, #quote, #blog, #feature-policy, #about{
+	padding: 5em 2em;
+}
+#my-account, #main-nav {
+	padding: 0 2em;
+}
+#promo, #samples, #brands, #legal {
+	padding: 2em 2em;
+}
+
+
+/*-------------- HOME page --------------*/
+/*---------------------------------------*/
+
+/* MY ACCOUNT header
+---------------------*/
+#my-account {
+	border: solid #efefef;
+	border-width: 0 0 1px;
+	text-transform: uppercase;
+}
+#my-account a {
+	color: #ff4f4f;
+}
+
+/* BANNER header
+---------------------*/
+#banner {
+	background: url(../assets/logo.png) center no-repeat;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+}
+#banner form {
+	width: 15em;
+	margin: 1em;
+}
+#banner input {
+	width: 100%;
+	border: solid #efefef;
+	border-width: 0 0 1px;
+}
+#banner input[placeholder] {
+	font-style: italic;
+}
+
+/* MAIN NAV nav
+---------------------*/
+#main-nav {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.25em;
+	line-height: 1.35em;
+	text-transform: uppercase;
+}
+#main-nav li {
+	margin: 0 1em 1em;
+	color: #ff4f4f;
+}
+#main-nav a {
+	padding: 0 0 0.1em;
+	color: #333;
+}
+#main-nav a:hover {
+	border: solid #888;
+	border-width: 0 0 2px;
+	color: #ff4f4f;
+}
+a.fade { 					/* overrides #main-nav a styles */
+	color: #888 !important; 
+	text-decoration: underline !important;
+}
+a.fade { 					/* overrides #main-nav a:hover styles */
+	border: none !important;
+}
+
+/* SLIDER section
+---------------------*/
+#slider {
+	height: 36em;
+	padding: 2em;
+	background: #e7e9e0 url(../assets/slider1.jpg) 75% no-repeat;
+}
+
+/* PROMO section
+---------------------*/
+#promo p {
+	color: #888;
+	margin: 0;
+}
+.box, .box h3, .box h4 {
+	text-align: right;
+}
+.red-box, .tall-box, .six-box-wrap {
+	display: inline-block;
+}
+.six-box-wrap {
+	width: 59em;
+}
+.red-box {
+	margin: 0.5em;
+	width: 18em;
+	height: 18em;
+	padding: 4em 0 5em;
+	vertical-align: top;
+	border: 1px solid #ff4f4f;
+}
+.red-box h3, .red-box h4, .red-box .line, .box.grey, .box.grey h3, .box.grey h4 {
+	text-align: center;
+}
+.tall-box {
+	margin: 0.4em;
+	width: 18em;
+	height: 37.3em;
+	padding: 4em 1.5em;
+	vertical-align: top;
+	background: url(../assets/womensjacket.jpg) center no-repeat;
+}
+.tall-box, .tall-box h3, .tall-box h4 {
+	text-align: left;
+	color: #fff;
+}
+.tall-box .text-frame {
+	padding: 12em 1em 5em;
+}
+.red-line {
+	display: inline-block;
+	width: 5em;
+	border: solid #ff4f4f;
+	border-width: 0 0 1px;
+}
+.box.grey, .box.grey h3, .box.grey h4 {
+	color: #fff;
+}
+.box.grey {
+	padding: 2em 1.5em;
+	background: #868082;
+}
+.box.grey .text-frame {
+	padding: 2.25em 1em;
+	background: url(../assets/mensjacket.jpg) center no-repeat;
+}
+
+/* SAMPLES section
+---------------------*/
+#samples ul {
+	margin: 0 0 0 1.75em;
+}
+a h5 {
+	color: #888;
+}
+a h5:hover {
+	color: #ff4f4f;
+}
+.red-x {
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.9em;
+	color: #ff4f4f;
+}
+.semi-tall-box {
+	display: inline-block;
+	margin: 0.8em;
+	width: 17.5em;
+	height: 23em;
+	text-align: left;
+	background: #efefef;
+}
+.semi-tall-box img {
+	width: 100%;
+	padding-bottom: 1.2em;
+}
+.semi-tall-box p {
+	margin: 0;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+/* QUOTE section
+---------------------*/
+#quote {
+	background: #333 url('../assets/quoteimage.jpg') center;
+}
+#quote .content-wrapper {
+	background-color: rgba(0,0,0,0.6);
+}
+#quote img {
+	display: inline-block;
+	width: 5em;
+	height: 5em;
+	margin: 2em 1em;
+	vertical-align: top;
+	border-radius: 50%;
+}
+.quote .line {
+	margin: 0 auto 1em 0;
+}
+.quote {
+	display: inline-block;
+	text-align: left;
+	width: 50%;
+	margin: 2em 0;
+}
+.quote h4, .quote p, .quote blockquote {
+	color: #fff;
+}
+.quote h4, .quote p {
+	text-align: left;
+	line-height: 0.5em;
+}
+.quote blockquote {
+	margin: 0 0 0.5em;
+}
+
+/* BLOG section
+---------------------*/
+
+#blog p {
+	color: #888;
+	font-size: 0.9em;
+}
+#blog .box, #blog h3 {
+	text-align: left;
+}
+#blog .box .line {
+	margin: 0 auto 1em 0;
+}
+#blog .double-line {
+	left: 17.5em;
+}
+#blog h3 {
+	line-height: 1.1em;
+}
+
+
+/* BRANDS section
+---------------------*/
+
+#brands img {
+	margin: 1em 2em;
+}
+
+/* FEATURE-POLICY footer
+----------------------*/
+#feature-policy .line {
+	width: 30em;
+	margin: 1em auto 3em;
+	border-width: 0 0 2px;
+}
+.offset-box-wrap, .offset-box-1, .offset-box-1 img, .offset-box-1 p {
+	display: inline-block;
+}
+.offset-box-1 img, .offset-box-1 p {
+	vertical-align: middle;
+	margin: 0.5em;
+	font-family: 'Montserrat', sans-serif;
+	text-transform: uppercase;
+	color: #333;
+}
+.offset-box-wrap {
+	vertical-align: top;
+	text-align: center;
+	margin: 1em 0;
+	width: 29%;
+}
+.offset-box-1, .offset-box-2 {
+	border: 1px solid #efefef;
+	height: 6em;
+	width: 25em;
+}
+.offset-box-1 {
+	position: relative;
+	padding: 1.1em;
+}
+.offset-box-2 {				/* position relative to .offset-box-1 */
+	position: absolute;
+	top: 4px;
+	left: -7px;
+}
+
+/* ABOUT footer
+----------------------*/
+#about {
+	background-color: #efefef;
+}
+#about .content-wrapper {
+	padding: 0 0 0 6em;
+}
+.quarter-width a {
+	color: #888;
+}
+.quarter-width, .quarter-width h3, .half-width, .half-width h3 {
+	display: inline-block;
+	text-align: left;
+}
+.quarter-width h3, .half-width h3 {
+	font-size: 1.3em;
+}
+.quarter-width {
+	width: 18em;
+	margin: 2em 1.5em;
+	vertical-align: top;
+}
+.half-width {
+	vertical-align: top;
+	width: 45%;
+	margin: 2em 1.5em;
+	padding: 0;
+}
+.social a {
+	display: inline-block;
+	height: 2em;
+	width: 2em;
+	border-radius: 50%;
+	vertical-align: top;
+	text-align: center;
+	background-color: #888;
+		transition: background-color 1s ease 0.5s;
+}
+.social img {
+	margin: 0.45em auto;
+}
+.social a:hover {
+	background-color: #ff4f4f;
+		transition: background-color 0.5s ease 0s;
+}
+.contact li, .site-map li {
+	display: block;
+}
+.contact li {
+	line-height: 2em;
+}
+.site-map li {
+	line-height: 1.7em;
+}
+.quarter-width li a {
+		transition: all 1s ease 0.3s;
+}
+.quarter-width li a:hover {
+	color: #ff4f4f;
+		transition: all 0.5s ease 0s;
+}
+.site-map li a:hover {
+	padding: 0 0 0 1em;
+		transition: all 0.5s ease 0s;
+}
+
+/* LEGAL section
+----------------------*/
+
+#legal li {
+	margin: 2em 0.5em;
+}
+#legal a {
+	color: #888;
+}
+#legal a:hover {
+	color: #ff4f4f;
+}
+#legal p {
+	margin: 2em 0;
+	text-transform: uppercase;
+	color: #888;
+	font-weight: 700;
+}
+
+
+/*------------- RESPONSIVE --------------*/
+/*------ (Monitors & Large Tablets) -----*/
+/*---------------------------------------*/
+
+@media screen and (max-width: 1500px) {
+
+	/* SLIDER section
+	-----------------------*/
+	#slider {
+		background-position: 85%;
+	}
+
+}
+
+@media screen and (max-width: 1250px) {
+	
+	/* SLIDER section
+	-----------------------*/
+	#slider {
+		background-position: 95%;
+	}
+	h1 {
+		left: 1em;
+	}
+	h2 {
+		text-align: left;
+		padding: 0 0 0 0.1em;
+	}
+
+	/* FEATURED-POLICY section
+	-----------------------*/
+	.offset-box-wrap {
+		margin: 1em;
+	}
+
+	/* ABOUT footer
+	-----------------------*/
+	#about .content-wrapper {
+		padding: 0 0 0 5em;
+	}
+	.quarter-width, .social {
+		width: 20.5%;
+	} 
+	.half-width h3 {
+		margin: 0 0.2em 0.5em;
+	}
+	form {
+		width: 100%;
+		margin: 0;
+	}
+
+}
+
+@media screen and (max-width: 1080px) {
+	
+	/* SLIDER section
+	-----------------------*/
+	#slider {
+		height: 30em;
+	}
+	h1 {
+		top: 1em;
+		color: #efefef;
+	}
+	h2 {
+		width: 100%;
+		background-color: rgba(0,0,0,0.4);
+	}
+
+	/* PROMO section
+	------------------------*/
+	.six-box-wrap {
+		width: 38.5em;
+	}
+
+	/* SAMPLES section
+	------------------------*/
+	.semi-tall-box {
+		width: 25em;
+		margin: 1.5em;
+	}
+	
+	/* FEATURED POLICY section
+	------------------------*/
+	.offset-box-wrap {
+		width: 100%;
+	}
+
+	/* ABOUT footer
+	------------------------*/
+	.quarter-width, .social {
+		width: 35%;
+	} 
+	.half-width {
+		width: 75.5%;
+	}
+	.email {
+		width: 51%;
+	}
+
+}
+
+@media screen and (max-width: 800px) {
+
+	/* BANNER section
+	-------------------------*/
+	#banner {
+		background-position: 65%
+	}
+
+	/* ABOUT footer
+	------------------------*/
+	.half-width {
+		width: 79%;
+	}
+
+	/* LEGAL footer
+	------------------------*/
+	#legal li {
+		margin: 0.5em 3em;
+	}
+
+}
+
+@media screen and (max-width: 640px) {
+	
+	.float-left, .float-right {
+		float: none;
+	}
+	
+	/* BANNER
+	-------------------------*/
+	#banner {
+		padding: 2em;
+		background-position: center;
+	}
+	#banner form {
+		width: 15em;
+		margin: 0 0 13em;
+	}
+		/* SLIDER section
+	-----------------------*/
+	#slider {
+		background-position: 100%;
+		background-size: 120%;
+	}
+	h1 {
+		top: 3em;
+		left: 0.5em;
+		font-size: 3em;
+	}
+	h2 {
+		line-height: 1.35em;
+		font-size: 5em;
+		padding: 0.5em 0 3em;
+	}
+
+	/* PROMO section
+	-------------------------*/
+	.six-box-wrap, .double-box-wrap {
+		width: 100%;
+	}
+	.double-line {
+		display: none;
+	}
+
+	/* SAMPLES section
+	-------------------------*/
+	#samples li {
+		display: block;
+	}
+	#samples ul {
+		padding: 0;
+		margin: 0;
+	}
+	.semi-tall-box {
+		width: 100%;
+	}
+
+	/* QUOTE section
+	-------------------------*/
+	.quote h4, .quote p {
+	line-height: 1.1em;
+	}
+
+	/* FEATURED-POLICY section
+	-------------------------*/
+	.offset-box-1, .offset-box-2 {
+		text-align: center;
+		height: 8em;
+		width: 15em;
+	}
+	.offset-box-1 {
+		padding: 0.5em;
+	}
+
+	/* ABOUT footer
+	--------------------------*/
+	#about .content-wrapper {
+	padding: 0;
+	}
+	.quarter-width, .quarter-width h3, .half-width, .half-width h3 {
+	display: inline-block;
+	text-align: center;
+	}
+	.quarter-width {
+	margin: 1em 0em;
+	}
+
+}
+
+
+
+/*----------------- LOCK ----------------*/
+/*---------------------------------------*/
+
+@media screen and (max-width: 320px) {
+
+	#my-account, #main-nav, #banner, #slider, #promo, #samples, #quote, #blog, #brands, #feature-policy, #about, #legal {
+		width: 320px;
+	}
+
+}
